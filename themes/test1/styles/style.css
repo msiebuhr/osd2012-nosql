@@ -25,7 +25,7 @@ BODY {
 	background: darkred;
 	color: white;
 
-	background: -webkit-radial-gradient(circle, firebrick, maroon);
+	background: -webkit-radial-gradient(circle, #a02f2d, #541818);
 }
 /*
 	.slide SECTION:before {
@@ -105,9 +105,10 @@ BODY {
 .slide BLOCKQUOTE:after {
 	margin:-45px 0 45px;
 	display:block;
-	color:#444;
+	color:#febc64;
 	font-weight:bold;
-	content:attr(cite);
+	text-align: right;
+	content: attr(cite);
 	}
 
 /* Lists */
