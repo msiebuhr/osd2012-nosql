@@ -103,7 +103,7 @@ BODY {
 	content:'\201C'; /* ldquo */
 	}
 .slide BLOCKQUOTE:after {
-	margin:-45px 0 45px;
+	/*margin:-45px 0 45px;*/
 	display:block;
 	color:#febc64;
 	font-weight:bold;
