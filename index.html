@@ -46,15 +46,6 @@ vi: set spell
 	</div></div>
 	<!-- }}} -->
 
-	<!-- {{{ theplan ->
-	<div class="slide shout" id="theplan"><div>
-		<section>
-			<header>
-				<h2>The Plan</h2>
-			</header>
-		</section>
-	</div></div>
-	<!- }}} -->
 	<!-- {{{  plan-->
 	<div class="slide" id="plan"><div>
 		<section>
@@ -73,7 +64,7 @@ vi: set spell
 	</div></div>
 	<!-- }}} -->
 
-	<!-- {{{ databaseDefinition -->
+	<!-- {{{ Databases -->
 	<div class="slide" id="databaseDefinition"><div>
 		<section>
 			<header>
@@ -99,7 +90,6 @@ vi: set spell
 				<li>ORM's</li>
 				<li>…</li>
 			</ul>
-
 	</section>
 	</div></div>
 
@@ -123,12 +113,77 @@ vi: set spell
 			<header>
 				<h2>/noʊ ˈɛs kjuː ˈɛl/ · /noʊ ˌsiːkwəl/</h2>
 			</header>
+			<!--
 			<ul class="centerlist inner">
 				<li class="active">No SQL (at all!)</li>
 				<li>Not Only SQL</li>
 			</ul>
+			-->
+			What can we gain, if we give up some (unused parts) of SQL?
 		</section>
 	</div></div>
+
+	<div class="slide" id="CAP"><div>
+		<section>
+			<header>
+				<h2>CAP theorem</h2>
+			</header>
+			<dl>
+				<dd>Consistency</dd>
+				<dt>All clients see the same data.</dt>
+				<dd>Availability</dd>
+				<dt>Each client can always read and write.</dt>
+				<dd>Partition Tolerance</dd>
+				<dt>Works despite network partitions.</dt>
+			</dl>
+		</section>
+	</div></div>
+
+	<div class="slide" id="ConsistencyAvailability"><div>
+		<section>
+			<header>
+				<h2>Consistency + Availability</h2>
+			</header>
+			RDBMS
+		</section>
+	</div></div>
+
+	<div class="slide" id="ConsistencyPartitionTolerance"><div>
+		<section>
+			<header>
+				<h2>Consistency + Partition Tolerance</h2>
+			</header>
+			Google BigTable
+			HBase
+			MongoDB
+			MemcacheDB
+			Redis
+			Berkeley DB
+		</section>
+	</div></div>
+
+	<div class="slide" id="PartitionToleranceAvailability"><div>
+		<section>
+			<header>
+				<h2>Partition Tolerance + Availability</h2>
+			</header>
+			Riak
+			Dynamo
+			Voldemort
+			Cassandra
+			CouchDB
+		</section>
+	</div></div>
+ 
+	<div class="slide" id="VisualCAP"><div>
+		<section>
+			<header>
+			<!--<h2>Overview</h2>-->
+			</header>
+			<img src="pictures/nosql_cap.png" alt="" width="70%" class="middle">
+		</section>
+	</div></div>
+
 	<!-- }}} -->
 
 	<!-- {{{ Header
@@ -205,14 +260,17 @@ vi: set spell
 	</div></div>
 	}}} -->
 
-	<!--
-	<div class="slide shout" id="Clarifications"><div>
+	<!-- {{{ Building Blocks - theory and application -->
+	<div class="slide shout" id="BuildingBlocks"><div>
 		<section>
 			<header>
-			<h2>Clarifications</h2>
+			<h2>Buildings Blocks</h2>
 			</header>
 		</section>
 	</div></div>
+	<!-- }}} Building Blocks - theory and application -->
+
+	<!--
 	<div class="slide shout" id="NOSQL"><div>
 		<section>
 			<header>
@@ -229,6 +287,7 @@ vi: set spell
 		</section>
 	</div></div>
 	-->
+
 	<div class="slide bg" id="Overview"><div>
 		<section>
 			<header>
@@ -239,14 +298,6 @@ vi: set spell
 	</div></div>
 
 
-	<div class="slide" id="CAP"><div>
-		<section>
-			<header>
-			<!--<h2>Overview</h2>-->
-			</header>
-			<img src="pictures/nosql_cap.png" alt="" width="70%" class="middle">
-		</section>
-	</div></div>
 	<!-- {{{ CodeSample
 	<div class="slide" id="CodeSample"><div>
 		<section>
