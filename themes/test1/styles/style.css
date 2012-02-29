@@ -91,6 +91,14 @@ BODY {
 	font-family:'PT Mono', monospace;
 	}
 
+/* Definition lists */
+.slide DL DD {
+	color: #d89055;
+}
+.slide DL DT {
+	margin-left: 1em;
+}
+
 /* Quote */
 .slide BLOCKQUOTE {
 	font-style:italic;
