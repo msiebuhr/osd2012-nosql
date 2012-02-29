@@ -45,6 +45,8 @@ BODY {
 	text-align: center;
 	/*color:#666;*/
 	font:bold 60px/1.13 'PT Sans Narrow', sans-serif;
+	color: #d89055;
+	text-shadow: 1px 1px #febc64;
 	}
 
 /* Elements */
