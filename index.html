@@ -91,11 +91,9 @@ vi: set spell
 
 			<ul class="centerlist inner">
 				<li class="active" />
-				<li>Been around since ≈1970</li>
 				<li>»Industry Standard«</li>
-				<li>We have experience</li>
-				<li>Good implementations</li>
-				<li>Auxiliary tools</li>
+				<li>ACID (Atomicity, Consistency, Isolation and Durability)</li>
+				<li>Been around since ≈1970</li>
 				<li>…</li>
 			</ul>
 	</section>
@@ -108,8 +106,7 @@ vi: set spell
 		<li class="active" />
 		<li>Language within a language</li>
 		<li>Consistency Overkill</li>
-		<li>Difficult to implement some data-models.</li>
-		<li>Full data-model up-front</li>
+		<li>Difficult to model some data-structures</li>
 		<li>Scaling</li>
 		<li>…</li>
 		</ul>
@@ -121,13 +118,42 @@ vi: set spell
 			<header>
 				<h2>/noʊ ˈɛs kjuː ˈɛl/ · /noʊ ˌsiːkwəl/</h2>
 			</header>
-			<!--
 			<ul class="centerlist inner">
-				<li class="active">No SQL (at all!)</li>
-				<li>Not Only SQL</li>
+				<li class="active">Forfeit Consistency and Isolation…</li>
+				<li>…for availability, grateful degradation and performance.</li>
+				<li>→ BASE: Basically Available, Soft-state, Eventual consistency</li>
 			</ul>
-			-->
-			What can we gain, if we give up some (unused parts) of SQL?
+		</section>
+	</div></div>
+
+	<div class="slide" id="ACIDvBASE"><div>
+		<section>
+			<header>
+				<h2>ACID → BASE</h2>
+			</header>
+			<table>
+			<thead><td width="50%">ACID</td><td width="50%">BASE<td></thead>
+			<tr><td>
+
+			<ul>
+			<li>Strong Consistency</li>
+			<li>Isolation</li>
+			<li>The »commit«</li>
+			<li>Schema evolution</li>
+			</ul>
+
+			</td> <td>
+
+			<ul>
+			<li>Weak/Eventual Consistency</li>
+			<li>Availability</li>
+			<li>Speed</li>
+			<li>Easier Evolution</li>
+			</ul>
+
+			</td>
+			</tr>
+			</table>
 		</section>
 	</div></div>
 	<!-- }}} -->
@@ -143,8 +169,9 @@ vi: set spell
 	<div class="slide" id="CAP"><div>
 		<section>
 			<header>
-				<h2>CAP theorem</h2>
+				<h2>E. A. Brewers CAP theorem</h2>
 			</header>
+			<!-- Make individual slides? -->
 			<dl>
 				<dd>Consistency</dd>
 				<dt>All clients see the same data.</dt>
@@ -165,15 +192,17 @@ vi: set spell
 	<div class="slide shout" id="PickAnyTwoAndFakeIt"><div>
 		<section>
 			<header>
-				<h2>Then fake the last</h2>
+				<h2>(Then fake the last)</h2>
 			</header>
 		</section>
 	</div></div>
 
+	<!-- Make blank CAP-triangle -->
+
 	<div class="slide" id="ConsistencyAvailability"><div>
 		<section>
 			<header>
-				<h2>Consistency + Availability</h2>
+			<h2>Consistency + Availability<br />(No Partition Tolerance)</h2>
 			</header>
 
 			<ul class="centerlist">
@@ -181,16 +210,18 @@ vi: set spell
 			<li>Typically have problems with network partitions</li>
 			<li>Fix it by adding replication</li>
 			<li>Screwing the System Administrators</li>
-			</ul>
 
-			<!-- RDBMS-->
+			<li>Traits: 2-phase commit, cache validation protocols</li>
+
+			<li>Examples: Single-site/Cluster databases, LDAP, RDBMS's</li>
+			</ul>
 		</section>
 	</div></div>
 
 	<div class="slide" id="ConsistencyPartitionTolerance"><div>
 		<section>
 			<header>
-				<h2>Consistency + Partition Tolerance</h2>
+				<h2>Consistency + Partition Tolerance (Limited Availability)</h2>
 			</header>
 
 
@@ -199,6 +230,12 @@ vi: set spell
 				<li>Deals with it by dropping availability.</li>
 				<li>Fix it by replicating data</li>
 				<li>Screwing our Users</li>
+
+				<li>Traits: Pessimistic Locking, Drop minority partitions when
+				in trouble</li>
+
+				<li>Examples: Distributed databases, locking and majority
+				protocols, Google BigTable, HBase, Redis, BDB</li>
 			</ul>
 
 			<!--
@@ -215,7 +252,7 @@ vi: set spell
 	<div class="slide" id="PartitionToleranceAvailability"><div>
 		<section>
 			<header>
-				<h2>Partition Tolerance + Availability</h2>
+			<h2>Partition Tolerance + Availability<br />(What Consistency?)</h2>
 			</header>
 
 			<ul class="centerlist">
@@ -223,6 +260,10 @@ vi: set spell
 			<li>»Eventual Consistency«</li>
 			<li>Fix it by replication and Verification</li>
 			<li>Screw the Developers</li>
+
+			<li>Traits: conflict resolution, optimistic, leases/expiration</li>
+
+			<li>Examples: DNS, Web Cache, Riak, Cassandra, CouchDB</li>
 			</ul>
 
 			<!--
@@ -253,8 +294,7 @@ vi: set spell
 		<h2>Building blocks</h2>
 		</section>
 	</div></div>
-	<!-- }}} -->
-	<!-- {{{ Building Blocks - theory and application -->
+
 	<div class="slide shout" id="BuildingBlocks"><div>
 		<section>
 			<header>
@@ -279,15 +319,67 @@ vi: set spell
 		</section>
 	</div></div>
 
-	<div class="slide shout" id="ConsistentHashing"><div>
+	<div class="slide shout" id="HashRings"><div>
 		<section>
 			<header>
-			<h2>Consistent Hashing</h2>
+			<h2>HashRings</h2>
 			</header>
 		</section>
 	</div></div>
 
-	<!-- }}} Building Blocks - theory and application -->
+	<!-- }}} Building Blocks -->
+
+	<!-- {{{ Databases, part II -->
+	<div class="slide bg" id="DatabasesPartII"><div>
+		<section>
+		<!--<img src="pictures/me.jpg" alt="">-->
+		<h2>Databases, part II</h2>
+		</section>
+	</div></div>
+
+	<div class="slide" id="KeyValue"><div>
+		<section>
+			<h2>Key-Value databases</h2>
+		</section>
+	</div></div>
+
+	<!-- }}} -->
+
+	<div class="slide" id="MongoDB"><div>
+		<section>
+			<h2>MongoDB</h2>
+		</section>
+		<ul>
+		<li>Document database</li>
+		<li>Free-form indices</li>
+		<li>Map/Reduce</li>
+		</ul>
+	</div></div>
+
+	<div class="slide" id="HBase"><div>
+		<section>
+			<h2>HBase</h2>
+		</section>
+		<ul>
+		<li>Column-oriented</li>
+		<li>Key-scans</li>
+		<li>Map/Reduce</li>
+		</ul>
+	</div></div>
+
+	<div class="slide" id="Riak"><div>
+		<section>
+			<h2>Riak</h2>
+		</section>
+		<ul>
+		<li>Key/Value</li>
+		<li>Eventual consistency</li>
+		<li>Links</li>
+		<li>Secondary Indices</li>
+		<li>Map/Reduce</li>
+		</ul>
+	</div></div>
+
 
 	<!-- {{{ Examples -->
 	<div class="slide bg" id="ExamplesIntroSlide"><div>
@@ -306,6 +398,7 @@ vi: set spell
 		</section>
 	</div></div>
 	<!-- }}} -->
+
 
 	<!-- {{{ Header
 	<div class="slide" id="Header"><div>
