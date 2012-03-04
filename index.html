@@ -159,10 +159,9 @@ vi: set spell
 	<!-- }}} -->
 
 	<!-- {{{ Theory -->
-	<div class="slide bg" id="theoryIntroSlide"><div>
+	<div class="slide bg shout" id="theoryIntroSlide"><div>
 		<section>
-		<img src="pictures/overview.jpg" alt="">
-		<h2>Theory-related image here</h2>
+		<img src="pictures/grand-scale.jpg" alt="">
 		</section>
 	</div></div>
 
@@ -288,9 +287,10 @@ vi: set spell
 	<!-- }}} -->
 
 	<!-- {{{ Building blocks -->
+	<!--
 	<div class="slide bg" id="BuildingBlocksIntroSlide"><div>
 		<section>
-		<!--<img src="pictures/me.jpg" alt="">-->
+		<!-<img src="ptures/me.jpg" alt=""> ->
 		<h2>Building blocks</h2>
 		</section>
 	</div></div>
@@ -326,45 +326,22 @@ vi: set spell
 			</header>
 		</section>
 	</div></div>
+	-->
 
 	<!-- }}} Building Blocks -->
 
 	<!-- {{{ Databases, part II -->
 	<div class="slide bg" id="DatabasesPartII"><div>
 		<section>
-		<!--<img src="pictures/me.jpg" alt="">-->
-		<h2>Databases, part II</h2>
+		<img src="pictures/dipping-toes.jpg" alt="">
 		</section>
 	</div></div>
 
-	<div class="slide" id="KeyValue"><div>
+	<!-- {{{ KeyValue -->
+	<div class="slide shout" id="KeyValue"><div>
 		<section>
-			<h2>Key-Value databases</h2>
+			<header> <h2>Key-Value databases</h2> </header>
 		</section>
-	</div></div>
-
-	<!-- }}} -->
-
-	<div class="slide" id="MongoDB"><div>
-		<section>
-			<h2>MongoDB</h2>
-		</section>
-		<ul>
-		<li>Document database</li>
-		<li>Free-form indices</li>
-		<li>Map/Reduce</li>
-		</ul>
-	</div></div>
-
-	<div class="slide" id="HBase"><div>
-		<section>
-			<h2>HBase</h2>
-		</section>
-		<ul>
-		<li>Column-oriented</li>
-		<li>Key-scans</li>
-		<li>Map/Reduce</li>
-		</ul>
 	</div></div>
 
 	<div class="slide" id="Riak"><div>
@@ -379,7 +356,47 @@ vi: set spell
 		<li>Map/Reduce</li>
 		</ul>
 	</div></div>
+	<!-- }}} -->
 
+	<!-- {{{ Column -->
+	<div class="slide" id="Column"><div>
+		<section>
+			<h2>Column/Tabular databases</h2>
+		</section>
+	</div></div>
+
+	<div class="slide" id="HBase"><div>
+		<section>
+			<h2>HBase</h2>
+		</section>
+		<ul>
+		<li>Column-oriented</li>
+		<li>Key-scans</li>
+		<li>Map/Reduce</li>
+		</ul>
+	</div></div>
+	<!-- }}} -->
+
+	<!-- {{{ Document -->
+	<div class="slide" id="Document"><div>
+		<section>
+			<h2>Document databases</h2>
+		</section>
+	</div></div>
+
+	<div class="slide" id="MongoDB"><div>
+		<section>
+			<h2>MongoDB</h2>
+		</section>
+		<ul>
+		<li>Document database</li>
+		<li>Free-form indices</li>
+		<li>Map/Reduce</li>
+		</ul>
+	</div></div>
+	<!-- }}} -->
+
+	<!-- }}} -->
 
 	<!-- {{{ Examples -->
 	<div class="slide bg" id="ExamplesIntroSlide"><div>
@@ -399,7 +416,30 @@ vi: set spell
 	</div></div>
 	<!-- }}} -->
 
+	<div class="slide bg" id="Questions"><div>
+		<section>
+			<header>
+			<!--<h2>Overview</h2>-->
+			</header>
+			<img src="pictures/questions.jpg" alt="">
+		</section>
+	</div></div>
 
+	<div class="slide" id="ThankYou"><div>
+		<section>
+			<header>
+				<h2>Thanks!</h2>
+			</header>
+			<p>Morten Siebuhr, One.com</p>
+			<ul>
+				<li><a href="http://sbhr.dk">sbhr.dk</a></li>
+				<li><a href="http://twitter.com/msiebuhr">twitter.com/msiebuhr</a></li>
+				<li><a href="mailto:sbhr@sbhr.dk">sbhr@sbhr.dk</a></li>
+			</ul>
+		</section>
+	</div></div>
+
+	<!-- {{{1 Slide templates -->
 	<!-- {{{ Header
 	<div class="slide" id="Header"><div>
 		<section>
@@ -473,7 +513,6 @@ vi: set spell
 		</section>
 	</div></div>
 	}}} -->
-
 	<!-- {{{ CodeSample
 	<div class="slide" id="CodeSample"><div>
 		<section>
@@ -554,29 +593,7 @@ vi: set spell
 		</section>
 	</div></div>
 	}}} -->
-
-	<div class="slide bg" id="Questions"><div>
-		<section>
-			<header>
-			<!--<h2>Overview</h2>-->
-			</header>
-			<img src="pictures/questions.jpg" alt="">
-		</section>
-	</div></div>
-
-	<div class="slide" id="ThankYou"><div>
-		<section>
-			<header>
-				<h2>Thanks!</h2>
-			</header>
-			<p>Morten Siebuhr, One.com</p>
-			<ul>
-				<li><a href="http://sbhr.dk">sbhr.dk</a></li>
-				<li><a href="http://twitter.com/msiebuhr">twitter.com/msiebuhr</a></li>
-				<li><a href="mailto:sbhr@sbhr.dk">sbhr@sbhr.dk</a></li>
-			</ul>
-		</section>
-	</div></div>
+	<!-- }}}1 Slide templates -->
 	<!--
 		To hide progress bar from entire presentation
 		just remove “progress” element.
@@ -584,5 +601,6 @@ vi: set spell
 	<div class="progress"><div></div></div>
 	<script src="scripts/script.js"></script>
 	<!-- Copyright © 2010–2011 Vadim Makeev, http://pepelsbey.net/ -->
+
 </body>
 </html>
