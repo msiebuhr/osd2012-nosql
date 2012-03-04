@@ -177,7 +177,6 @@ BODY {
 	.slide PRE CODE {
 		display:block;
 		padding:0;
-		background:none;
 		white-space:pre;
 		}
 	.slide PRE CODE:before {
