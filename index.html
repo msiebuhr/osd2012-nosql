@@ -334,7 +334,32 @@ vi: set spell
 </pre>
 		</section>
 	</div></div>
+
+	<div class="slide" id="MapReduceCaveats"><div>
+		<section>
+		<header><h2>Map/Reduce Caveats</h2></header>
+		<ul>
+		<li> Don't use for querying!
+		<li> Very efficient for bulk-operations.
+		</ul>
+		</section>
+	</div></div>
 	<!-- }}} -->
+
+	<!-- {{{ Common stuff -->
+	<div class="slide" id="CommonThumbs"><div>
+		<section>
+		<header><h2>Heads up!</h2></header>
+		<ul class="inner">
+		<li> Very weak data-massage query-time.
+		<li> Massage data when inserting it.
+		<li> May end up inserting data multiple times, but that's not really a problem.
+		</ul>
+		</section>
+	</div></div>
+	<!-- }}} -->
+
+	<!-- perhaps add SQL-slide to show the differences -->
 
 	<!-- {{{ KeyValue -->
 	<div class="slide shout" id="KeyValue"><div>
@@ -424,6 +449,7 @@ vi: set spell
 			<li> <code>get(key) → document</code>
 			<li> <code>query(some_query_language)</code>
 			<li> <code>delete(key, …)</code>
+			<li> Sometimes:<br /> <code>create_index(document_part)</code>
 			</ul>
 		</section>
 	</div></div>
