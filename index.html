@@ -274,7 +274,7 @@ vi: set spell
 			-->
 		</section>
 	</div></div>
- 
+
 	<div class="slide" id="VisualCAP"><div>
 		<section>
 			<header>
@@ -337,6 +337,49 @@ vi: set spell
 		</section>
 	</div></div>
 
+	<div class="slide" id="TypesOfDatabases"><div>
+		<section>
+			<header> <h2>NoSQL categories</h2> </header>
+
+			<ul class="centerlist">
+			<li> Key/Value
+			<li> Document
+			<li> Column / Tabular
+			<li> (Graph)
+			</ul>
+
+		</section>
+	</div></div>
+
+	<!-- {{{ MapReduce -->
+	<div class="slide" id="CommonMapReduce"><div>
+		<section>
+		<header><h2>Common: Map/Reduce</h2></header>
+		<ul class="inner">
+		<li class="active"><code>map(key1, value1)</code> → <code>[(key2, value2), ...]</code>
+		<li><code>reduce(key2, [value2])</code> → <code>[value3, ...]</code>
+		</ul>
+		</section>
+	</div></div>
+
+	<div class="slide" id="MapReduceExample"><div>
+		<section>
+		<header><h2>Map/Reduce wordcount</h2></header>
+
+<pre>
+<code>def map(document_name, text):
+	for word in text:
+		yield (word, 1)</code>
+
+… Shuffle output …
+
+<code>def reduce(word, count):
+	yield (word, sum(count))</code>
+</pre>
+		</section>
+	</div></div>
+	<!-- }}} -->
+
 	<!-- {{{ KeyValue -->
 	<div class="slide shout" id="KeyValue"><div>
 		<section>
@@ -344,10 +387,25 @@ vi: set spell
 		</section>
 	</div></div>
 
+	<div class="slide" id="KeyValueAPI"><div>
+		<section>
+			<header> <h2>API</h2> </header>
+			<ul class="centerlist">
+			<li> Key → Value
+			<li> <code>set(key, value)</code>
+			<li> <code>get(key)</code>
+			<li> <code>delete(key)</code>
+			<li> Sometimes:</li>
+			<li> <code>get_all()</code>
+			</ul>
+		</section>
+	</div></div>
+
 	<div class="slide" id="Riak"><div>
 		<section>
-			<h2>Riak</h2>
-		</section>
+		<header>
+		<h2>Riak</h2>
+		</header>
 		<ul>
 		<li>Key/Value</li>
 		<li>Eventual consistency</li>
@@ -355,44 +413,74 @@ vi: set spell
 		<li>Secondary Indices</li>
 		<li>Map/Reduce</li>
 		</ul>
+		</section>
 	</div></div>
 	<!-- }}} -->
 
 	<!-- {{{ Column -->
-	<div class="slide" id="Column"><div>
+	<div class="slide shout" id="Column"><div>
 		<section>
-			<h2>Column/Tabular databases</h2>
+		<header><h2>Column/Tabular databases</h2></header>
+		</section>
+	</div></div>
+
+	<div class="slide" id="ColumnAPI"><div>
+		<section>
+			<header> <h2>API</h2> </header>
+			<ul class="centerlist">
+			<li> (Table, Row, Prefix:Column) → Value
+			<li> <code>create_table(table, column_prefixes)</code>
+			<li> <code>set(table, row, prefix:column, value)</code>
+			<li> <code>get(table, [row], [prefix:[column]])</code>
+			<li> <code>scan(table, row_start, row_end, [prefix:[column]])</code>
+			<li> <code>delete(table, …)</code>
+			</ul>
 		</section>
 	</div></div>
 
 	<div class="slide" id="HBase"><div>
 		<section>
-			<h2>HBase</h2>
-		</section>
+		<header><h2>HBase</h2></header>
 		<ul>
 		<li>Column-oriented</li>
+		<li>Backed by HDFS</li>
+		<li>Copy of Google BigTable</li>
 		<li>Key-scans</li>
 		<li>Map/Reduce</li>
 		</ul>
+		</section>
 	</div></div>
 	<!-- }}} -->
 
 	<!-- {{{ Document -->
-	<div class="slide" id="Document"><div>
+	<div class="slide shout" id="Document"><div>
 		<section>
-			<h2>Document databases</h2>
+			<header> <h2>Document databases</h2> </header>
+		</section>
+	</div></div>
+
+	<div class="slide" id="DocumentAPI"><div>
+		<section>
+			<header> <h2>API</h2> </header>
+			<ul class="centerlist">
+			<li> Document
+			<li> <code>set(document, [key]) → key</code>
+			<li> <code>get(key) → document</code>
+			<li> <code>query(some_query_language)</code>
+			<li> <code>delete(key, …)</code>
+			</ul>
 		</section>
 	</div></div>
 
 	<div class="slide" id="MongoDB"><div>
 		<section>
-			<h2>MongoDB</h2>
-		</section>
+		<header><h2>MongoDB</h2></header>
 		<ul>
 		<li>Document database</li>
 		<li>Free-form indices</li>
 		<li>Map/Reduce</li>
 		</ul>
+		</section>
 	</div></div>
 	<!-- }}} -->
 
