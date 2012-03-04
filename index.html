@@ -196,6 +196,12 @@ vi: set spell
 		</section>
 	</div></div>
 
+	<div class="slide" id="CAPTriangle"><div>
+		<section>
+			<object data="graphics/CAP.svg" type="image/svg+xml" height="300" class="middle"></object>
+		</section>
+	</div></div>
+
 	<!-- Make blank CAP-triangle -->
 
 	<div class="slide" id="ConsistencyAvailability"><div>
@@ -203,7 +209,12 @@ vi: set spell
 			<header>
 			<h2>Consistency + Availability<br />(No Partition Tolerance)</h2>
 			</header>
+			<object data="graphics/CA.svg" type="image/svg+xml" height="300" class="middle"></object>
+		</section>
+	</div></div>
 
+	<div class="slide" id="ConsistencyAvailability2"><div>
+		<section>
 			<ul class="centerlist">
 			<li>All clients see the same data, and all clients can read and write</li>
 			<li>Typically have problems with network partitions</li>
@@ -222,8 +233,12 @@ vi: set spell
 			<header>
 				<h2>Consistency + Partition Tolerance (Limited Availability)</h2>
 			</header>
+			<object data="graphics/CP.svg" type="image/svg+xml" height="300" class="middle"></object>
+		</section>
+	</div></div>
 
-
+	<div class="slide" id="ConsistencyPartitionTolerance2"><div>
+		<section>
 			<ul class="centerlist">
 				<li>All clients see the same data, despite partitioned network.</li>
 				<li>Deals with it by dropping availability.</li>
@@ -253,7 +268,12 @@ vi: set spell
 			<header>
 			<h2>Partition Tolerance + Availability<br />(What Consistency?)</h2>
 			</header>
+			<object data="graphics/AP.svg" type="image/svg+xml" height="300" class="middle"></object>
+		</section>
+	</div></div>
 
+	<div class="slide" id="PartitionToleranceAvailability2"><div>
+		<section>
 			<ul class="centerlist">
 			<li>All clients and read and write despite network partitions.</li>
 			<li>»Eventual Consistency«</li>
