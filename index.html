@@ -448,6 +448,87 @@ select_expr [, select_expr ...]
 		</ul>
 		</section>
 	</div></div>
+
+	<div class="slide" id="RiakHash"><div>
+		<section>
+			<header><h2>One giant hash-table</h2></header>
+			<ul class="centerlist">
+
+				<li>Typically ~64 parts
+
+				<li> <object data="graphics/riak-hashtable.svg" type="image/svg+xml"></object>
+
+				<li>Then save each part on multiple machines
+
+			</ul>
+		</section>
+	</div></div>
+
+	<div class="slide" id="RiakLazyStateOnly"><div>
+		<section>
+			<header><h2>Lazily propagate global state</h2></header>
+			<object data="graphics/riak-lazy-state-only.svg" type="image/svg+xml" class="middle"></object>
+		</section>
+	</div></div>
+
+	<div class="slide" id="RiakLazyState"><div>
+		<section>
+			<header><h2>Then take care of data</h2></header>
+			<object data="graphics/riak-lazy-state.svg" type="image/svg+xml" class="middle"></object>
+		</section>
+	</div></div>
+
+	<div class="slide" id="RiakThreeServers"><div>
+		<section>
+			<header><h2>Three servers</h2></header>
+			<object data="graphics/riak-3servers.svg" type="image/svg+xml" class="middle"></object>
+		</section>
+	</div></div>
+
+	<div class="slide" id="RiakFourServers"><div>
+		<section>
+			<header><h2>Then four</h2></header>
+			<object data="graphics/riak-4servers.svg" type="image/svg+xml"  class="middle"></object>
+		</section>
+	</div></div>
+
+	<div class="slide" id="RiakFiveServers"><div>
+		<section>
+			<header><h2>Then five</h2></header>
+			<object data="graphics/riak-5servers.svg" type="image/svg+xml"  class="middle"></object>
+		</section>
+	</div></div>
+
+	<div class="slide" id="RiakFiveServersOneDown"><div>
+		<section>
+			<header><h2>Crash!</h2></header>
+			<object data="graphics/riak-5servers-1down.svg" type="image/svg+xml"  class="middle"></object>
+		</section>
+	</div></div>
+
+	<div class="slide" id="RiakMaths"><div>
+		<section>
+			<header><h2>How many copies?</h2></header>
+			<ul class="centerlist">
+			<li> Three parameters: <em>w</em>/<em>dw</em> and <em>r</em>.
+			<li> One given: <em>servers</em>.
+			<li> <em>w</em> + <em>r</em> &gt; <em>servers</em>
+			</ul>
+		</section>
+	</div></div>
+
+	<div class="slide" id="RiakExamples"><div>
+		<section>
+			<header><h2>How many copies?</h2></header>
+			<ul class="centerlist inner">
+			<li class="active"> Given 5 servers...
+			<li> <code>w=3</code> and <code>r=3</code> → ~ consistent system
+			<li> <code>w=1</code> and <code>r=5</code> → fast write, slow reads 
+			<li> <code>w=4</code> and <code>r=1</code> → slow write, fast reads
+			<li> <code>w=1</code> and <code>r=1</code> → cache
+			</ul>
+		</section>
+	</div></div>
 	<!-- }}} -->
 
 	<!-- {{{ Column -->
