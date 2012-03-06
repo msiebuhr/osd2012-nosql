@@ -83,10 +83,10 @@ vi: set spell
 			<ul class="centerlist inner">
 				<li class="active" />
 				<li>Databases</li>
-				<li>Bulding Blocks</li>
+				<li>ACID vs. BASE</li>
 				<li>NoSQL anatomy</li>
-				<li>Usage</li>
-				<li>How to Choose</li>
+				<li>Wet Toes</li>
+				<li>Fin!</li>
 			</ul>
 		</section>
 	</div></div>
@@ -133,7 +133,7 @@ vi: set spell
 		<ul class="centerlist inner">
 		<li class="active" />
 		<li>Language within a language</li>
-		<li>Consistency Overkill</li>
+		<li>Constantly on ACID</li>
 		<li>Difficult to model some data-structures</li>
 		<li>Scaling</li>
 		<li>…</li>
@@ -148,8 +148,11 @@ vi: set spell
 			</header>
 			<ul class="centerlist inner">
 				<li class="active">Forfeit Consistency and Isolation…</li>
-				<li>…for availability, grateful degradation and performance.</li>
-				<li>→ BASE: Basically Available, Soft-state, Eventual consistency</li>
+				<li> …for availability,
+				<li> grateful degradation
+				<li> and performance
+				<li> <b>BASE</b>
+				<li> Basically Available, Soft-state, Eventual consistency
 			</ul>
 		</section>
 	</div></div>
@@ -193,20 +196,38 @@ vi: set spell
 		</section>
 	</div></div>
 
-	<div class="slide" id="CAP"><div>
+	<div class="slide shout" id="CAP"><div>
 		<section>
 			<header>
-				<h2>E. A. Brewers CAP theorem</h2>
+			<h2>E. A. Brewer:<br/>The CAP theorem</h2>
 			</header>
-			<!-- Make individual slides? -->
-			<dl>
-				<dd>Consistency</dd>
-				<dt>All clients see the same data.</dt>
-				<dd>Availability</dd>
-				<dt>Each client can always read and write.</dt>
-				<dd>Partition Tolerance</dd>
-				<dt>Works despite network partitions.</dt>
-			</dl>
+		</section>
+	</div></div>
+
+	<div class="slide" id="CAPTheoremConsistency"><div>
+		<section>
+			<header>
+				<h2>Consistency</h2>
+			</header>
+			<p class="middle">All clients see the same data
+		</section>
+	</div></div>
+
+	<div class="slide" id="CAPTheoremAvailability"><div>
+		<section>
+			<header>
+				<h2>Availability</h2>
+			</header>
+			<p class="middle">Each client can always read and write
+		</section>
+	</div></div>
+
+	<div class="slide" id="CAPTheoremPartitionTolerance"><div>
+		<section>
+			<header>
+				<h2>Partition Tolerance</h2>
+			</header>
+			<p class="middle">Works despite network partitions
 		</section>
 	</div></div>
 
@@ -216,26 +237,22 @@ vi: set spell
 		</section>
 	</div></div>
 
-	<div class="slide shout" id="PickAnyTwoAndFakeIt"><div>
+	<div class="slide" id="PickAnyTwoAndFakeIt"><div>
 		<section>
-			<header>
-				<h2>(Then fake the last)</h2>
-			</header>
+			<p class="middle">(Then work very <em>very</em> hard to fake the last!)
 		</section>
 	</div></div>
 
 	<div class="slide" id="CAPTriangle"><div>
 		<section>
-			<object data="graphics/CAP.svg" type="image/svg+xml" height="300" class="middle"></object>
+			<object data="graphics/CAP.svg" type="image/svg+xml" class="middle"></object>
 		</section>
 	</div></div>
-
-	<!-- Make blank CAP-triangle -->
 
 	<div class="slide" id="ConsistencyAvailability"><div>
 		<section>
 			<header>
-			<h2>Consistency + Availability<br />(No Partition Tolerance)</h2>
+			<h2>Consistency + Availability</h2>
 			</header>
 			<object data="graphics/CA.svg" type="image/svg+xml" height="300" class="middle"></object>
 		</section>
@@ -259,7 +276,7 @@ vi: set spell
 	<div class="slide" id="ConsistencyPartitionTolerance"><div>
 		<section>
 			<header>
-				<h2>Consistency + Partition Tolerance (Limited Availability)</h2>
+				<h2>Consistency + Partition Tolerance</h2>
 			</header>
 			<object data="graphics/CP.svg" type="image/svg+xml" height="300" class="middle"></object>
 		</section>
@@ -294,7 +311,7 @@ vi: set spell
 	<div class="slide" id="PartitionToleranceAvailability"><div>
 		<section>
 			<header>
-			<h2>Partition Tolerance + Availability<br />(What Consistency?)</h2>
+			<h2>Partition Tolerance + Availability</h2>
 			</header>
 			<object data="graphics/AP.svg" type="image/svg+xml" height="300" class="middle"></object>
 		</section>
@@ -323,14 +340,15 @@ vi: set spell
 		</section>
 	</div></div>
 
+	<!--
 	<div class="slide" id="VisualCAP"><div>
 		<section>
 			<header>
-			<!--<h2>Overview</h2>-->
 			</header>
 			<img src="pictures/nosql_cap.png" alt="" width="70%" class="middle">
 		</section>
 	</div></div>
+	-->
 
 	<!-- }}} -->
 
@@ -354,59 +372,6 @@ vi: set spell
 
 		</section>
 	</div></div>
-
-	<!-- {{{ MapReduce -->
-	<div class="slide" id="CommonMapReduce"><div>
-		<section>
-		<header><h2>Common: Map/Reduce</h2></header>
-		<ul class="inner">
-		<li class="active"><code>map(key1, value1)</code> → <code>[(key2, value2), ...]</code>
-		<li><code>reduce(key2, [value2])</code> → <code>[value3, ...]</code>
-		</ul>
-		</section>
-	</div></div>
-
-	<div class="slide" id="MapReduceExample"><div>
-		<section>
-		<header><h2>Map/Reduce wordcount</h2></header>
-
-<pre>
-<code>def map(document_name, text):
-	for word in text:
-		yield (word, 1)</code>
-
-… Shuffle output …
-
-<code>def reduce(word, count):
-	yield (word, sum(count))</code>
-</pre>
-		</section>
-	</div></div>
-
-	<div class="slide" id="MapReduceCaveats"><div>
-		<section>
-		<header><h2>Map/Reduce Caveats</h2></header>
-		<ul>
-		<li> Don't use for querying!
-		<li> Very efficient for bulk-operations.
-		</ul>
-		</section>
-	</div></div>
-	<!-- }}} -->
-
-	<!-- {{{ Common stuff -->
-	<div class="slide" id="CommonThumbs"><div>
-		<section>
-		<header><h2>Heads up!</h2></header>
-		<ul class="inner">
-		<li class="active">
-		<li> Very weak data-massage query-time.
-		<li> Massage data when inserting it.
-		<li> May end up inserting data multiple times, but that's not really a problem.
-		</ul>
-		</section>
-	</div></div>
-	<!-- }}} -->
 
 	<!-- {{{ SQLComparison -->
 
@@ -442,6 +407,92 @@ select_expr [, select_expr ...]
 
 	<!-- }}} -->
 
+	<!-- {{{ Common stuff -->
+	<div class="slide" id="CommonThumbs"><div>
+		<section>
+		<header><h2>Heads up!</h2></header>
+		<ul class="inner">
+		<li class="active">
+		<li> Very weak data-massage query-time.
+		<li> Massage data when inserting it.
+		<li> May end up inserting data multiple times, but that's not really a problem.
+		</ul>
+		</section>
+	</div></div>
+	<!-- }}} -->
+
+	<!-- {{{ Document -->
+	<div class="slide shout" id="Document"><div>
+		<section>
+			<header> <h2>Document databases</h2> </header>
+		</section>
+	</div></div>
+
+	<div class="slide" id="DocumentAPI"><div>
+		<section>
+			<header> <h2>Document</h2> </header>
+			<ul class="centerlist inner">
+			<li class="active"/>
+			<li> <code>put(document, [key]) → key</code>
+			<li> <code>get(key) → document</code>
+			<li> <code>delete(key, …)</code>
+			<li> Support variations of:<br />
+				<code>create_index(document_part)</code>
+			<li> Sometimes:<br/>
+				<code>query(some_query_language)</code>
+			</ul>
+		</section>
+	</div></div>
+
+	<div class="slide" id="CouchDB"><div>
+		<section>
+		<header><h2>CouchDB</h2></header>
+		<ul>
+		<li>Replicates entire databases</li>
+		<li>Map/Reduce for indices</li>
+		</ul>
+		</section>
+	</div></div>
+
+	<div class="slide shout" id="CDBReplication"><div>
+		<section>
+		<header> <h2>WTF:<br/>Replicates entire DB everywhere‽</h2> </header>
+		</section>
+	</div></div>
+
+	<div class="slide" id="CommonMapReduce"><div>
+		<section>
+		<header><h2>Map/Reduce</h2></header>
+		<ul class="inner">
+		<li class="active"><code>map(key1, value1)</code> → <code>[(key2, value2), ...]</code>
+		<li><code>reduce(key2, [value2])</code> → <code>[value3, ...]</code>
+		</ul>
+		</section>
+	</div></div>
+
+	<!-- Example of PUT → M/R → new keys -->
+
+	<div class="slide" id="MapReduceExample"><div>
+		<section>
+		<header><h2>Map/Reduce wordcount</h2></header>
+
+<pre>
+<code>def map(document_name, text):
+	for word in text.split():
+		yield (word, 1)</code>
+
+… Shuffle output …
+
+<code>def reduce(word, count):
+	yield (word, sum(count))</code>
+</pre>
+		</section>
+	</div></div>
+
+	<!-- }}} -->
+
+	<!-- TODO: Other Document databases -->
+
 	<!-- {{{ KeyValue -->
 	<div class="slide shout" id="KeyValue"><div>
 		<section>
@@ -454,7 +505,7 @@ select_expr [, select_expr ...]
 			<header> <h2>API</h2> </header>
 			<ul class="centerlist">
 			<li> Key → Value
-			<li> <code>set(key, value)</code>
+			<li> <code>put(key, value)</code>
 			<li> <code>get(key)</code>
 			<li> <code>delete(key)</code>
 			<li> Sometimes:</li>
@@ -469,11 +520,10 @@ select_expr [, select_expr ...]
 		<h2>Riak</h2>
 		</header>
 		<ul>
-		<li>Key/Value</li>
 		<li>Eventual consistency</li>
 		<li>Links</li>
 		<li>Secondary Indices</li>
-		<li>Map/Reduce</li>
+		<li>Map/Reduce for bulk operations</li>
 		</ul>
 		</section>
 	</div></div>
@@ -553,12 +603,14 @@ select_expr [, select_expr ...]
 			<li class="active"> Given 5 servers...
 			<li> <code>w=3</code> and <code>r=3</code> → ~ consistent system
 			<li> <code>w=1</code> and <code>r=5</code> → fast write, slow reads 
-			<li> <code>w=4</code> and <code>r=1</code> → slow write, fast reads
+			<li> <code>w=5</code> and <code>r=1</code> → slow write, fast reads
 			<li> <code>w=1</code> and <code>r=1</code> → cache
 			</ul>
 		</section>
 	</div></div>
 	<!-- }}} -->
+
+	<!-- TODO: Other KV databases -->
 
 	<!-- {{{ Column -->
 	<div class="slide shout" id="Column"><div>
@@ -573,7 +625,7 @@ select_expr [, select_expr ...]
 			<ul class="centerlist">
 			<li> (Table, Row, Prefix:Column) → Value
 			<li> <code>create_table(table, column_prefixes)</code>
-			<li> <code>set(table, row, prefix:column, value)</code>
+			<li> <code>put(table, row, prefix:column, value)</code>
 			<li> <code>get(table, [row], [prefix:[column]])</code>
 			<li> <code>scan(table, row_start, row_end, [prefix:[column]])</code>
 			<li> <code>delete(table, …)</code>
@@ -621,38 +673,7 @@ select_expr [, select_expr ...]
 
 	<!-- }}} -->
 
-	<!-- {{{ Document -->
-	<div class="slide shout" id="Document"><div>
-		<section>
-			<header> <h2>Document databases</h2> </header>
-		</section>
-	</div></div>
-
-	<div class="slide" id="DocumentAPI"><div>
-		<section>
-			<header> <h2>API</h2> </header>
-			<ul class="centerlist">
-			<li> Document
-			<li> <code>set(document, [key]) → key</code>
-			<li> <code>get(key) → document</code>
-			<li> <code>query(some_query_language)</code>
-			<li> <code>delete(key, …)</code>
-			<li> Sometimes:<br /> <code>create_index(document_part)</code>
-			</ul>
-		</section>
-	</div></div>
-
-	<div class="slide" id="MongoDB"><div>
-		<section>
-		<header><h2>MongoDB</h2></header>
-		<ul>
-		<li>Document database</li>
-		<li>Free-form indices</li>
-		<li>Map/Reduce</li>
-		</ul>
-		</section>
-	</div></div>
-	<!-- }}} -->
+	<!-- TODO: Other Column databases -->
 
 	<!-- }}} -->
 
@@ -672,6 +693,15 @@ select_expr [, select_expr ...]
 		<h2>HowToChoose</h2>
 		</section>
 	</div></div>
+
+	<!-- talk about:
+	they're evolving!
+	be practical, not academical → BASE rather than CAP
+	try them out! ... with real data!
+	the cloud
+	what programming language are you using?
+	-->
+
 	<!-- }}} -->
 
 	<div class="slide bg" id="Questions"><div>
