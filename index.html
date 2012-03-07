@@ -496,6 +496,19 @@ select_expr [, select_expr …]
 		</section>
 	</div></div>
 
+	<div class="slide" id="MapReduceExample2"><div>
+		<section>
+		<header><h2>»Veiw« with Map/Reduce</h2></header>
+
+<pre>
+<code>PUT /dbname/_design/viewname/</code>
+Then query with:
+<code>GET /dbname/_design/viewname/_view/all \
+	?and_some_modifiers</code>
+</pre>
+		</section>
+	</div></div>
+
 	<!-- }}} -->
 
 	<!-- TODO: Other Document databases -->
@@ -640,16 +653,32 @@ select_expr [, select_expr …]
 		</section>
 	</div></div>
 
+	<div class="slide" id="ColumnAPI2"><div>
+		<section>
+		<header><h2>Data model</h2></header>
+		<ul>
+		<li> Think: Sparse matrices
+		<li> One file per table + column family
+		</ul>
+		</section>
+	</div></div>
+
 	<div class="slide" id="HBase"><div>
 		<section>
 		<header><h2>HBase</h2></header>
 		<ul>
 		<li>Column-oriented</li>
-		<li>Backed by HDFS</li>
+		<li>Built on Hadoop</li>
 		<li>Copy of Google BigTable</li>
 		<li>Key-scans</li>
 		<li>Map/Reduce</li>
 		</ul>
+		</section>
+	</div></div>
+
+	<div class="slide" id="Hadoop Cluster"><div>
+		<section>
+			<object data="graphics/hadoop-cluster.svg" type="image/svg+xml" class="middle"></object>
 		</section>
 	</div></div>
 
@@ -707,6 +736,7 @@ select_expr [, select_expr …]
 	try them out! … with real data!
 	the cloud
 	what programming language are you using?
+	look at your data!
 	-->
 
 	<!-- }}} -->
