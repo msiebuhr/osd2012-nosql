@@ -197,7 +197,15 @@ vi: set spell
 	<div class="slide shout" id="CAP"><div>
 		<section>
 			<header>
-			<h2>E. A. Brewer:<br/>The CAP theorem</h2>
+			<h2>Eric A. Brewer:<br/>The CAP theorem</h2>
+			</header>
+		</section>
+	</div></div>
+
+	<div class="slide shout" id="CAPSpelledOut"><div>
+		<section>
+			<header>
+			<h2>Consistency,<br/>Availability and<br/>Partition Tolerance</h2>
 			</header>
 		</section>
 	</div></div>
@@ -207,7 +215,7 @@ vi: set spell
 			<header>
 				<h2>Consistency</h2>
 			</header>
-			<p class="middle">All clients see the same data
+			<p class="middle">All clients see the same data at the same time
 		</section>
 	</div></div>
 
@@ -216,7 +224,8 @@ vi: set spell
 			<header>
 				<h2>Availability</h2>
 			</header>
-			<p class="middle">Each client can always read and write
+			<!--<p class="middle">Each client can always read and write-->
+			<p class="middle" style="text-align:center">Every request recieves a response about whether the operation was successfull or failed
 		</section>
 	</div></div>
 
@@ -225,7 +234,10 @@ vi: set spell
 			<header>
 				<h2>Partition Tolerance</h2>
 			</header>
-			<p class="middle">Works despite network partitions
+			<p class="middle" style="text-align: center">
+			Works despite network partitions
+			<br>·<br>
+			Continues to operate despite arbitratry message loss
 		</section>
 	</div></div>
 
