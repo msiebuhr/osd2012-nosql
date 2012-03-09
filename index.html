@@ -434,7 +434,7 @@ select_expr [, select_expr …]
 			<li> <code>get(key) → document</code>
 			<li> <code>delete(key, …)</code>
 			<li> Support variations of:<br />
-				<code>create_index(document_part)</code>
+				<code>create_index(document_part)</code> · <code>query_index(…)</code>
 			<li> Sometimes:<br/>
 				<code>query(some_query_language)</code>
 			</ul>
@@ -444,8 +444,9 @@ select_expr [, select_expr …]
 	<div class="slide" id="CouchDB"><div>
 		<section>
 		<header><h2>CouchDB</h2></header>
-		<ul>
-		<li>Replicates entire database … everywhere</li>
+		<ul class="inner">
+		<li class="active"> Available + Partition-tolerant
+		<li>Replicates entire databases … everywhere</li>
 		<li>Map/Reduce for indices</li>
 		</ul>
 		</section>
@@ -453,7 +454,7 @@ select_expr [, select_expr …]
 
 	<div class="slide shout" id="CouchDBReplication"><div>
 		<section>
-		<header> <h2>WTF:<br/>Replicates entire DB everywhere‽</h2> </header>
+		<header> <h2>WTF:<br/>Replicates entire DBs everywhere‽</h2> </header>
 		</section>
 	</div></div>
 
@@ -470,18 +471,17 @@ select_expr [, select_expr …]
 		<section>
 		<header><h2>Map/Reduce</h2></header>
 		<ul class="inner">
-		<li class="active"><code>map(key1, value1)</code> → <code>[(key2, value2), …]</code>
-		<li><code>reduce(key2, [value2])</code> → <code>[value3, …]</code>
+		<li class="active">
+		<li> <code>map(key1, value1)</code> → <code>[(key2, value2), …]</code>
+		<li> … Shuffle output …
+		<li> <code>reduce(key2, [value2])</code> → <code>[value3, …]</code>
 		</ul>
 		</section>
 	</div></div>
 
-	<!-- Example of PUT → M/R → new keys -->
-
 	<div class="slide" id="MapReduceExample"><div>
 		<section>
 		<header><h2>Map/Reduce wordcount</h2></header>
-
 <pre>
 <code>def map(document_name, text):
 	for word in text.split():
