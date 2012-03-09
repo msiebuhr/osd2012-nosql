@@ -10,7 +10,22 @@
 BODY {
 	font:25px/1.8 'PT Sans', sans-serif;
 	counter-reset:paging;
-	}
+}
+
+/* Tables */
+
+TABLE {
+	text-align: center;
+	font-family: 'PT Mono', monospace;
+}
+
+TABLE THEAD {
+	font-wight: bold;
+}
+
+TABLE TR TD, TABLE THEAD TD {
+	padding: 1px 5px;
+}
 
 /* Slide
 ---------------------------------------- */

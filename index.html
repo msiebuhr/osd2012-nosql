@@ -445,7 +445,7 @@ select_expr [, select_expr …]
 		<section>
 		<header><h2>CouchDB</h2></header>
 		<ul class="inner">
-		<li class="active"> Available + Partition-tolerant
+		<li class="active"> Available + Partition-tolerant → »Eventual Consistency«
 		<li>Replicates entire databases … everywhere</li>
 		<li>Map/Reduce for indices</li>
 		<li>Vector clocks
@@ -599,11 +599,11 @@ Then query with:
 	<div class="slide" id="RiakHash"><div>
 		<section>
 			<header><h2>One giant hash-table</h2></header>
-			<ul class="centerlist">
+			<ul class="centerlist inner">
 
-				<li>Typically ~64 parts
+				<li class="active"> <object data="graphics/riak-hashtable.svg" type="image/svg+xml"></object>
 
-				<li> <object data="graphics/riak-hashtable.svg" type="image/svg+xml"></object>
+				<li>Split it, typically ~64 parts
 
 				<li>Then save each part on multiple machines
 
@@ -703,11 +703,169 @@ Then query with:
 
 	<div class="slide" id="ColumnAPI2"><div>
 		<section>
-		<header><h2>Data model</h2></header>
-		<ul>
-		<li> Think: Sparse matrices
-		<li> One file per table + column family
-		</ul>
+		<header><h2>Big, sparse matrices</h2></header>
+
+		  <table class="middle">
+			<thead>
+			  <tr>
+				<td style="border-bottom: 3px solid #febc64">row</td>
+				<td width="30px"></td>
+				<td style="border-bottom: 3px solid #febc64" colspan="3">cf1</td>
+				<td width="30px"></td>
+				<td style="border-bottom: 3px solid #febc64" colspan="3">cf2</td>
+			  </tr>
+			</thead>
+
+			<tr style="font-size: 0.7em">
+			  <td></td>
+			  <td></td>
+			  <td style="border-bottom: 3px solid #febc64">cf1:col2 </td>
+			  <td style="border-bottom: 3px solid #febc64">cf1:col2 </td>
+			  <td style="border-bottom: 3px solid #febc64">cf2:col3 </td>
+			  <td></td>
+			  <td style="border-bottom: 3px solid #febc64">cf2:col1 </td>
+			  <td style="border-bottom: 3px solid #febc64">cf2:col2 </td>
+			  <td style="border-bottom: 3px solid #febc64">cf2:col3 </td>
+			</tr>
+
+			<tr>
+			  <td>a</td>
+			  <td></td>
+			  <td>value1</td>
+			  <td></td>
+			  <td></td>
+			  <td></td>
+			  <td>value2</td>
+			  <td>value3</td>
+			  <td>value4</td>
+			</tr>
+
+			<tr>
+			  <td>b</td>
+			  <td></td>
+			  <td></td>
+			  <td></td>
+			  <td>value5</td>
+			  <td></td>
+			  <td>value6</td>
+			  <td>value7</td>
+			  <td></td>
+			</tr>
+
+			<tr>
+			  <td>c</td>
+			  <td></td>
+			  <td></td>
+			  <td>value8</td>
+			  <td>value9</td>
+			  <td></td>
+			  <td>value10</td>
+			  <td></td>
+			  <td>value11</td>
+			</tr>
+
+			<tr>
+			  <td>d</td>
+			  <td></td>
+			  <td>value12</td>
+			  <td></td>
+			  <td></td>
+			  <td></td>
+			  <td>value13</td>
+			  <td>value14</td>
+			  <td>value15</td>
+			</tr>
+
+			<tr>
+			  <td>…</td>
+			  <td></td>
+			  <td></td>
+			  <td>…</td>
+			  <td></td>
+			  <td></td>
+			  <td></td>
+			  <td>…</td>
+			  <td></td>
+			</tr>
+		  </table>
+
+		</section>
+	</div></div>
+
+	<div class="slide" id="ColumnAPIExample"><div>
+		<section>
+		<header><h2>The Canonical Example</h2></header>
+
+		  <table class="middle">
+			<thead>
+			  <tr>
+				<td style="border-bottom: 3px solid #febc64">URL</td>
+				<td width="30px"></td>
+				<td style="border-bottom: 3px solid #febc64" colspan="1">data</td>
+				<td width="30px"></td>
+				<td style="border-bottom: 3px solid #febc64" colspan="3">meta</td>
+			  </tr>
+			</thead>
+
+			<tr style="font-size: 0.7em">
+			  <td></td>
+			  <td></td>
+			  <td style="border-bottom: 3px solid #febc64">data:content</td>
+			  <td></td>
+			  <td style="border-bottom: 3px solid #febc64">meta:headers</td>
+			  <td style="border-bottom: 3px solid #febc64">meta:c-t</td>
+			  <td style="border-bottom: 3px solid #febc64">meta:speed</td>
+			</tr>
+
+			<tr style="font-size: 0.5em">
+			  <td>com.web.service</td>
+			  <td></td>
+			  <td>{"foo": "bar", …}</td>
+			  <td></td>
+			  <td>Accept: …</td>
+			  <td>application/json</td>
+			  <td>0.1s</td>
+			</tr>
+
+			<tr style="font-size: 0.5em">
+			  <td>org.o-s-d.www</td>
+			  <td></td>
+			  <td>&lt;html&nbsp;xmlns="http://…</td>
+			  <td></td>
+			  <td>Charset: utf-8…</td>
+			  <td>text/html char…</td>
+			  <td>1.18s</td>
+			</tr>
+
+			<tr style="font-size: 0.5em">
+			  <td>dk.sbhr</td>
+			  <td></td>
+			  <td>&lt;doctype&nbsp;html&gt;\n&lt;html…</td>
+			  <td></td>
+			  <td>Age: 0…</td>
+			  <td></td>
+			  <td>0.44s</td>
+			</tr>
+
+			<tr style="font-size: 0.5em">
+			  <td>dk.sbhr/about</td>
+			  <td></td>
+			  <td>&lt;doctype&nbsp;html&gt;\n&lt;html…</td>
+			  <td></td>
+			  <td>Host: sbhr.dk…</td>
+			  <td></td>
+			  <td>0.71s</td>
+			</tr>
+
+			<tr style="font-size: 0.5em">
+			  <td>…</td>
+			  <td></td>
+			  <td>…</td>
+			  <td></td>
+			  <td colspan="3">…</td>
+			</tr>
+		  </table>
+
 		</section>
 	</div></div>
 
