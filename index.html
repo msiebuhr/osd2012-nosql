@@ -37,7 +37,7 @@ vi: set spell
 		<section>
 		<ul class="centerlist inner">
 		<li class="active">Computer Scientist</li>
-		<li>Webdeveloper, One.com</li>
+		<li>Webdeveloper</li>
 		<li>Interest in distributed systems</li>
 		</ul>
 		</section>
@@ -670,7 +670,7 @@ Then query with:
 			<ul class="centerlist inner">
 			<li class="active"> Given 5 servers…
 			<li> <code>w=3</code> and <code>r=3</code> → ~ consistent system
-			<li> <code>w=1</code> and <code>r=5</code> → fast write, slow reads 
+			<li> <code>w=1</code> and <code>r=5</code> → fast write, slow reads
 			<li> <code>w=5</code> and <code>r=1</code> → slow write, fast reads
 			<li> <code>w=1</code> and <code>r=1</code> → cache
 			</ul>
@@ -882,9 +882,22 @@ Then query with:
 		</section>
 	</div></div>
 
-	<div class="slide" id="Hadoop Cluster"><div>
+	<div class="slide" id="HadoopCluster"><div>
 		<section>
 			<object data="graphics/hadoop-cluster.svg" type="image/svg+xml" class="middle"></object>
+		</section>
+	</div></div>
+
+	<div class="slide" id="HBaseKeyScans"><div>
+		<section>
+		<header><h2>Organization & keyscans</h2></header>
+		<ul class="centerlist inner">
+		<li class="active"> Column-family → distict set of files
+		<li> Keys held in-memory, if possible or explicitly configured
+		<li> Many machines holds part of the index → scan in parallel
+		<li> Optional bloom filters
+		</ul>
+
 		</section>
 	</div></div>
 	<!-- }}} -->
@@ -897,42 +910,57 @@ Then query with:
 	<div class="slide bg" id="ExamplesIntroSlide"><div>
 		<section>
 		<img src="pictures/dipping-toes.jpg" alt="">
-		<h2>Examples</h2>
 		</section>
 	</div></div>
 
-	<!-- {{{ Common stuff ->
 	<div class="slide" id="CommonThumbs"><div>
 		<section>
 		<header><h2>Heads up!</h2></header>
 		<ul class="inner">
 		<li class="active">
-		<li> Very weak data-massage query-time.
-		<li> Massage data when inserting it.
-		<li> May end up inserting data multiple times, but that's not really a problem.
+		<li> Only get »raw« data in and out.
+		<li> Have to massage data in the application.
+		<li> Inflexible query-system.
+		<li> Fix by inserting same data under multiple keys/documents and pretend those are indices.
 		</ul>
 		</section>
 	</div></div>
-	<!- }}} -->
-	<!-- }}} -->
+	<!-- https://highlyscalable.wordpress.com/2012/03/01/nosql-data-modeling-techniques/ -->
 
-	<!-- {{{ How to Choose -->
-	<div class="slide bg" id="HowToChooseIntroSlide"><div>
+	<div class="slide" id="ExampleDimensionReduction"><div>
 		<section>
-		<!--<img src="pictures/me.jpg" alt="">-->
-		<h2>HowToChoose</h2>
+			<header> <h2>Dimension Reductino / Geo</h2> </header>
+			<ul class="centerlist">
+			<li> Latitude - longitude
+			<li> <em>55.681722</em>, 12.530602
+			<li> <em>5</em>1<em>5</em>2..<em>6</em>5<em>8</em>3...
+			</ul>
 		</section>
 	</div></div>
 
-	<!-- talk about:
-	they're evolving!
-	be practical, not academical → BASE rather than CAP
-	try them out! … with real data!
-	the cloud
-	what programming language are you using?
-	look at your data!
-	-->
+	<div class="slide" id="ExampleDimensionReduction2"><div>
+		<section>
+			<img src="graphics/geohash-index.png" class="middle">
+		</section>
+	</div></div>
 
+	<!-- }}} -->
+
+	<!-- {{{ How to Choose -->
+	<div class="slide" id="HowToChooseIntroSlide"><div>
+		<section>
+		<header><h2>HowToChoose</h2></header>
+			<ul class="centerlist inner">
+				<li class="active">
+				<li> They're evolving!
+				<li> Look at your data!
+				<li> What programming language are you using?
+				<!--<li> Be practical, not academical → BASE rather than CAP-->
+				<li> Try them out! … with real data!
+				<li> »The Cloud«
+			</ul>
+		</section>
+	</div></div>
 	<!-- }}} -->
 
 	<!-- {{{ Questions and Thanks! -->
@@ -950,7 +978,7 @@ Then query with:
 			<header>
 				<h2>Thanks!</h2>
 			</header>
-			<p>Morten Siebuhr, One.com</p>
+			<p>Morten Siebuhr</p>
 			<ul>
 				<li><a href="http://sbhr.dk">sbhr.dk</a></li>
 				<li><a href="http://twitter.com/msiebuhr">twitter.com/msiebuhr</a></li>
