@@ -932,6 +932,7 @@ Then query with:
 		</ul>
 		</section>
 	</div></div>
+
 	<!-- https://highlyscalable.wordpress.com/2012/03/01/nosql-data-modeling-techniques/ -->
 
 	<div class="slide" id="ExampleDimensionReduction"><div>
@@ -948,6 +949,21 @@ Then query with:
 	<div class="slide" id="ExampleDimensionReduction2"><div>
 		<section>
 			<img src="graphics/geohash-index.png" class="middle">
+		</section>
+	</div></div>
+
+	<div class="slide" id="BonusWriteBandwidth"><div>
+		<section>
+		<header><h2>Free writes!</h2></header>
+		<ul class="inner centerlist">
+		<li class="active">
+		<li> Problem: <br>Multiple front-end machines will write to the same key
+		<li> lock → read → update → write → unlock + read
+		<li> Exploit that <code>read &lt; write &lt; lock</code>
+		<li> Each machine write separate keys → merge after reading
+		<li> read → update → write + multiple read
+		<li> Then reader can write back one key, if needed
+		</ul>
 		</section>
 	</div></div>
 
